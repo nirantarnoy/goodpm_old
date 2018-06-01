@@ -3,19 +3,20 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `delivery_type`.
+ * Handles the creation of table `failurecode`.
  */
-class m171129_124828_create_delivery_type_table extends Migration
+class m180601_071957_create_failurecode_table extends Migration
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('delivery_type', [
+        $this->createTable('failurecode', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(),
-            'description' => $this->string(),
+            'failure_code'=>$this->string(),
+            'name'=>$this->string(),
+            'description'=>$this->text(),
             'status' => $this->integer(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
@@ -25,10 +26,10 @@ class m171129_124828_create_delivery_type_table extends Migration
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function safeDown()
     {
-        $this->dropTable('delivery_type');
+        $this->dropTable('failurecode');
     }
 }

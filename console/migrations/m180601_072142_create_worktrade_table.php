@@ -3,19 +3,20 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `asset_group`.
+ * Handles the creation of table `worktrade`.
  */
-class m171128_105308_create_product_category_table extends Migration
+class m180601_072142_create_worktrade_table extends Migration
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('product_category', [
+        $this->createTable('worktrade', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(),
-            'description' => $this->string(),
+            'worktrade_code'=>$this->string(),
+            'name'=>$this->string(),
+            'description'=>$this->text(),
             'status' => $this->integer(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
@@ -25,10 +26,10 @@ class m171128_105308_create_product_category_table extends Migration
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function safeDown()
     {
-        $this->dropTable('product_category');
+        $this->dropTable('worktrade');
     }
 }

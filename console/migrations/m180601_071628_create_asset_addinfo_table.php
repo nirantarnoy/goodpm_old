@@ -3,21 +3,22 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `tradetable`.
+ * Handles the creation of table `asset_addinfo`.
  */
-class m180504_040918_create_tradetable_table extends Migration
+class m180601_071628_create_asset_addinfo_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('tradetable', [
+        $this->createTable('asset_addinfo', [
             'id' => $this->primaryKey(),
-            'journalid' => $this->string(),
-            'journaltype' => $this->integer(),
-            'transdate' => $this->integer(),
-            'note' => $this->string(),
+            'asset_id'=>$this->integer(),
+            'additional_type'=>$this->integer(),
+            'name'=>$this->string(),
+            'description'=>$this->text(),
+            'filename'=>$this->string(),
             'status' => $this->integer(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
@@ -31,6 +32,6 @@ class m180504_040918_create_tradetable_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('tradetable');
+        $this->dropTable('asset_addinfo');
     }
 }

@@ -3,22 +3,20 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `journal_trans`.
+ * Handles the creation of table `product_gallery`.
  */
-class m171128_121340_create_journal_trans_table extends Migration
+class m171129_130234_create_asset_gallery_table extends Migration
 {
     /**
      * @inheritdoc
      */
     public function safeUp()
     {
-        $this->createTable('journal_trans', [
+        $this->createTable('asset_gallery', [
             'id' => $this->primaryKey(),
-            'journal_id' => $this->integer(),
-            'product_id' => $this->integer(),
-            'qty' => $this->float(),
-            'journal_type_status' => $this->integer(),
-            'line_amount'=> $this->float(),
+            'asset_id' => $this->integer(),
+            'photo' => $this->string(),
+            'file_extension' => $this->string(),
             'status' => $this->integer(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
@@ -32,6 +30,6 @@ class m171128_121340_create_journal_trans_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('journal_trans');
+        $this->dropTable('asset_gallery');
     }
 }
