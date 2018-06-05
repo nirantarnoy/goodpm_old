@@ -30,21 +30,21 @@ class PlantController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            'access'=>[
-                'class'=> AccessControl::className(),
-                'rules'=>[
-                    [
-                        'allow'=>true,
-                        'actions'=>['index','create','view','update','delete','showcity','showdistrict','showzipcode','addbank'],
-                        'roles'=>['SystemAdmin']
-                    ],
-                    [
-                        'allow'=>true,
-                        'actions'=>['index'],
-                        'roles'=>['ManageInventory']
-                    ]
-                ]
-            ]
+//            'access'=>[
+//                'class'=> AccessControl::className(),
+//                'rules'=>[
+//                    [
+//                        'allow'=>true,
+//                        'actions'=>['index','create','view','update','delete','showcity','showdistrict','showzipcode','addbank'],
+//                        'roles'=>['SystemAdmin']
+//                    ],
+//                    [
+//                        'allow'=>true,
+//                        'actions'=>['index'],
+//                        'roles'=>['ManageInventory']
+//                    ]
+//                ]
+//            ]
         ];
     }
 

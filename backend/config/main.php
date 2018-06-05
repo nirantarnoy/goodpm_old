@@ -39,6 +39,7 @@ return [
             'errorAction' => 'site/error',
         ],
             'assetManager' => [
+            'appendTimestamp' => true,
             'bundles' => [
                 'yii2mod\alert\AlertAsset' => [
                     'css' => [

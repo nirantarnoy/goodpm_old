@@ -31,7 +31,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
     <![endif]-->
     <style>
         body{
-            font-family: "Ekkamai";
+            font-family: "Cloud-Light";
         }
     </style>
 </head>
@@ -45,7 +45,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
             <div class="left_col scroll-view">
 
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.php?r=dashboard" class="site_title"><i class="fa fa-cubes"></i> <span>Good PM</span></a>
+                    <a href="index.php?r=dashboard" class="site_title" style="font-family: Cloud-Bold"><i class="fa fa-clock-o"></i> <span>Good PM</span></a>
                 </div>
                 <div class="clearfix"></div>
 
@@ -75,7 +75,19 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                 "items" => [
                                     ["label" => "แดซบอร์ด", "url" => ["dashboard/index"], "icon" => "dashboard"],
                                     ["label" => "ตั้งค่าระบบ", "url" => ["sysconfig/index"], "icon" => "cogs"],
-                                    ["label" => "ร้านค้า", "url" => ["plant/index"], "icon" => "institution"],
+
+                                    [
+                                        "label" => "บริษัท/องค์กร",
+                                        "icon" => "institution",
+                                        "url" => "#",
+                                        "items" => [
+                                            ["label" => "บริษัท/องค์กร", "url" => ["plant/index"]],
+                                            ["label" => "ฝ่าย", "url" => ["department/index"]],
+                                            ["label" => "แผนก", "url" => ["section/index"]],
+                                            ["label" => "ที่ตั้ง", "url" => ["location/index"]],
+
+                                        ],
+                                    ],
                                     [
                                         "label" => "ผู้ใช้งาน",
                                         "icon" => "users",
@@ -92,6 +104,53 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         "url" => "#",
                                         "items" => [
                                             ["label" => "ลำดับเอกสาร", "url" => ["sequence/index"]],
+                                            ["label" => "Failure Code", "url" => ["failurecode/index"]],
+                                            ["label" => "รห้สบัญชี", "url" => ["accountcode/index"]],
+                                            ["label" => "ประเภทบัญชี", "url" => ["accountcost/index"]],
+                                            ["label" => "Work flow", "url" => ["workflow/index"]],
+                                        ],
+                                    ],
+                                    [
+                                        "label" => "ข้อมูลเครื่องจักร",
+                                        "icon" => "cubes",
+                                        "url" => "#",
+                                        "items" => [
+                                            ["label" => "กลุ่มเครื่องจักร", "url" => ["assetgroup/index"]],
+                                            ["label" => "เครื่องจักร", "url" => ["asset/index"]],
+                                            ["label" => "หน่วยงานรับผิดชอบ", "url" => ["worktrade/index"]],
+                                        ],
+                                    ],
+                                    [
+                                        "label" => "แผนบำรุงรักษา",
+                                        "icon" => "calendar",
+                                        "url" => "#",
+                                        "items" => [
+                                            ["label" => "กำหนดแผนบำรุงรักษา", "url" => ["masterplan/index"]],
+                                            ["label" => "คำนวนแผน", "url" => ["genplan/index"]],
+                                            //["label" => "หน่วยงานรับผิดชอบ", "url" => ["sequence/index"]],
+                                        ],
+                                    ],
+                                    [
+                                        "label" => "ใบสั่งงาน",
+                                        "icon" => "pencil-square-o",
+                                        "url" => "#",
+                                        "items" => [
+                                            ["label" => "ประเภทใบงาน", "url" => ["worktype/index"]],
+                                            ["label" => "ใบร้อแจ้งร้องขอ", "url" => ["workreq/index"]],
+                                            ["label" => "ใบสั่งงาน", "url" => ["workorder/index"]],
+                                        ],
+                                    ],
+                                    [
+                                        "label" => "จัดการสต๊อก",
+                                        "icon" => "object-group",
+                                        "url" => "#",
+                                        "items" => [
+                                            ["label" => "ใบสั่งซื้อ", "url" => ["purchorder/index"]],
+                                            ["label" => "ปรับยอด", "url" => ["adjust/index"]],
+                                            ["label" => "ย้าย", "url" => ["transfer/index"]],
+                                            ["label" => "เบิกอะไหล่", "url" => ["issue/index"]],
+                                            ["label" => "คืนอะไหล่", "url" => ["return/index"]],
+                                            ["label" => "นับสต๊อกอะไหล่", "url" => ["counting/index"]],
                                         ],
                                     ],
                                    
@@ -100,10 +159,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         "icon" => "line-chart",
                                         "url" => "#",
                                         "items" => [
-                                            // ["label" => "กลุ่มลูกค้า", "url" => ["customergroup/index"]],
-                                            // ["label" => "ลูกค้า", "url" => ["customer/index"]],
-                                            // ["label" => "ใบขาย", "url" => ["saleorder/index"]],
-                                            // ["label" => "Invoice", "url" => ["invoice/index"]],
+                                             ["label" => "Breakdown Analysis", "url" => ["customergroup/index"]],
+                                             ["label" => "Top Failure", "url" => ["customer/index"]],
+                                             ["label" => "MTPF", "url" => ["saleorder/index"]],
+                                             ["label" => "MTTR", "url" => ["invoice/index"]],
                                         ],
                                     ],
                                

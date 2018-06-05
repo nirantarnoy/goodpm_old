@@ -121,7 +121,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                   'headerOptions' => ['style' => 'text-align: left'],
                                   'contentOptions' => ['style' => 'vertical-align: middle'], 
                                    'value'=> function($data){
-                                    return \backend\models\Warehouse::findWarehousename($data->warehouse_id);
+                    return $data->warehouse_id;
+                                    //return \backend\models\Warehouse::findWarehousename($data->warehouse_id);
                                   }   
                               ],
                         [

@@ -45,6 +45,11 @@ class User extends \common\models\User
   	return count($model)>0?$model:null;
 
   }
+    public function findUserName($id){
+        $model = User::find()->where(['id'=>$id])->one();
+        return count($model)>0?$model->username:'';
+
+    }
   public function getRoleByUser(){
 	  $auth = Yii::$app->authManager;
 	  $rolesUser = $auth->getRolesByUser($this->id);

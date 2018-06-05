@@ -56,7 +56,7 @@ use kartik\select2\Select2;
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                    <?= $form->field($model, 'warehouse_id')->widget(Select2::className(),[
-                                      'data' => ArrayHelper::map(backend\models\Warehouse::find()->all(),'id','name'),
+                                      'data' => ArrayHelper::map(backend\models\Plant::find()->all(),'id','name'),
                                       'options' => ['placeholder'=>'เลือกคลังสินค้า']
                                    ])->label(false) ?>
                                 </div>

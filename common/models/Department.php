@@ -33,6 +33,7 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['company_id','name'],'required'],
             [['company_id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['name', 'description'], 'string', 'max' => 255],
         ];
@@ -45,7 +46,7 @@ class Department extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'company_id' => Yii::t('app', 'Company ID'),
+            'company_id' => Yii::t('app', 'บริษัท'),
             'name' => Yii::t('app', 'ชื่อกลุ่ม'),
             'description' => Yii::t('app', 'รายละเอียด'),
             'status' => Yii::t('app', 'สถานะ'),

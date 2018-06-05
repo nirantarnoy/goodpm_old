@@ -64,10 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <body class="nav-<?= !empty($_COOKIE['menuIsCollapsed']) && $_COOKIE['menuIsCollapsed'] == 'true' ? 'sm' : 'md' ?>" >
 <?php $this->beginBody(); ?>
 <div class="container">
-
         <div class="card card-container">
- 
-            <h1><i class="fa fa-cubes"></i> <?= Html::encode($this->title) ?></h1>
+            <h1><i class="fa fa-cogs"></i> <?= Html::encode($this->title) ?></h1>
             <p>กรุณากรอกข้อมูลสำหรับการเข้าใช้งานระบบ:</p>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>

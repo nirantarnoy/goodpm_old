@@ -33,6 +33,7 @@ class Section extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['department_id','name'],'required'],
             [['department_id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['name', 'description'], 'string', 'max' => 255],
         ];
@@ -45,9 +46,9 @@ class Section extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'department_id' => Yii::t('app', 'Department ID'),
-            'name' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description'),
+            'department_id' => Yii::t('app', 'ฝ่าย'),
+            'name' => Yii::t('app', 'แผนก'),
+            'description' => Yii::t('app', 'รายละเอียด'),
             'status' => Yii::t('app', 'สถานะ'),
             'created_at' => Yii::t('app', 'สร้างเมื่อ'),
             'updated_at' => Yii::t('app', 'แก้ไขเมื่อ'),
