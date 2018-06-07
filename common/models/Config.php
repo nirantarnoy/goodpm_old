@@ -33,7 +33,9 @@ class Config extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['plant_id', 'is_currency_rate', 'is_auto_backup', 'is_negative_stock', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
+            [['plant_id', 'is_currency_rate', 'is_auto_backup',
+                'is_negative_stock', 'created_at', 'updated_at',
+                'created_by', 'updated_by','is_bom','is_transfer_asset','is_direct_issue'], 'integer'],
         ];
     }
 

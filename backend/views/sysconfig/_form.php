@@ -29,7 +29,7 @@ use lavrentiev\widgets\toastr\Notification;
                 "debug" => false,
                 "newestOnTop" => false,
                 "progressBar" => false,
-                "positionClass" => "toast-top-right",
+                "positionClass" => "toast-top-center",
                 "preventDuplicates" => false,
                 "onclick" => null,
                 "showDuration" => "300",
@@ -65,28 +65,53 @@ use lavrentiev\widgets\toastr\Notification;
                   <div class="x_content">
                     <br />
                                <?php $form = ActiveForm::begin(['options'=>['class'=>'form-horizontal form-label-left']]); ?>
-                             
-                              <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"><?=Yii::t('app','ใช้งานอัตราแลกเปลี่ยน')?> <span class="required"></span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                   <?php echo $form->field($model, 'is_currency_rate')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"><?=Yii::t('app','ยอมให้สินค้าติดลบในคลัง')?> <span class="required"></span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                   <?php echo $form->field($model, 'is_negative_stock')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"><?=Yii::t('app','ใช้งานสำรองข้อมูลอัตโนมัติ')?> <span class="required"></span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                   <?php echo $form->field($model, 'is_auto_backup')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
-                                </div>
-                              </div>
+                             <div class="row">
+                                 <div class="col-lg-4">
+                                     <div class="form-group">
+                                         <label class="control-label col-md-6 col-sm-6 col-xs-12" for="first-name"><?=Yii::t('app','กำหนดการสำรองข้อมูลเอง')?> <span class="required"></span>
+                                         </label>
+                                         <div class="col-md-4 col-sm-4 col-xs-12">
+                                             <?php echo $form->field($model, 'is_auto_backup')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label class="control-label col-md-6 col-sm-6 col-xs-12" for="first-name"><?=Yii::t('app','เปิดการใช้งาน Bom')?> <span class="required"></span>
+                                         </label>
+                                         <div class="col-md-4 col-sm-4 col-xs-12">
+                                             <?php echo $form->field($model, 'is_bom')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
+                                         </div>
+                                     </div>
+
+
+                                 </div>
+                                 <div class="col-lg-4">
+                                     <div class="form-group">
+                                         <label class="control-label col-md-6 col-sm-6 col-xs-12" for="first-name"><?=Yii::t('app','เปิดการใช้งานการย้าย asset')?> <span class="required"></span>
+                                         </label>
+                                         <div class="col-md-4 col-sm-4 col-xs-12">
+                                             <?php echo $form->field($model, 'is_transfer_asset')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="col-lg-4">
+                                     <div class="form-group">
+                                         <label class="control-label col-md-6 col-sm-6 col-xs-12" for="first-name"><?=Yii::t('app','เปิดการใช้งานสต๊อกติดลบ')?> <span class="required"></span>
+                                         </label>
+                                         <div class="col-md-4 col-sm-4 col-xs-12">
+                                             <?php echo $form->field($model, 'is_negative_stock')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label class="control-label col-md-6 col-sm-6 col-xs-12" for="first-name"><?=Yii::t('app','เปิดการใช้งาน Direct Issue')?> <span class="required"></span>
+                                         </label>
+                                         <div class="col-md-4 col-sm-4 col-xs-12">
+                                             <?php echo $form->field($model, 'is_direct_issue')->widget(Switchery::className(),['options'=>['label'=>'','class'=>'form-control']])->label(false) ?>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+
+
                           
 
                              <div class="ln_solid"></div>

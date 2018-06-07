@@ -135,4 +135,15 @@ class SequenceController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+    public function actionAutogen(){
+        if(Yii::$app->request->isAjax){
+            $gentype = Yii::$app->request->post('autogen');
+            if($gentype){
+                $x = Sequence::autogen();
+                $session = Yii::$app->session;
+                $session->setFlash('msg','บันทึกรายการเรียบร้อย');
+                return $this->redirect(['index']);
+            }
+        }
+    }
 }

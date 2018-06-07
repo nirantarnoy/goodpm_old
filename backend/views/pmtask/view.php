@@ -4,13 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Workorder */
+/* @var $model backend\models\Pmtask */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'ใบสั่งงาน'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Pmtasks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="workorder-view">
+<div class="pmtask-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
@@ -26,29 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'work_order_no',
-            'work_order_date',
             'name',
             'description:ntext',
-            'action_by',
-            'action_date',
-            'action_note',
-            'vendor_id',
-            'work_trade',
-            'work_type',
-            'work_priority',
-            'work_title',
-            'request_detail:ntext',
-            'plant_id',
-            'department_id',
-            'section_id',
-            'location_id',
-            'estimate_start_date',
-            'estimate_end_date',
-            'actual_start_date',
-            'actual_end_date',
-            'actual_asset_start_date',
-            'asset_id',
+            'attach_file',
             'status',
             'created_at',
             'updated_at',

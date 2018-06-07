@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Worktrade;
-use backend\models\WorktradeSearch;
+use backend\models\Pmtask;
+use backend\models\PmtaskSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * WorktradeController implements the CRUD actions for Worktrade model.
+ * PmtaskController implements the CRUD actions for Pmtask model.
  */
-class WorktradeController extends Controller
+class PmtaskController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,13 +30,13 @@ class WorktradeController extends Controller
     }
 
     /**
-     * Lists all Worktrade models.
+     * Lists all Pmtask models.
      * @return mixed
      */
     public function actionIndex()
     {
         $pageSize = \Yii::$app->request->post("perpage");
-        $searchModel = new WorktradeSearch();
+        $searchModel = new PmtaskSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = $pageSize;
         return $this->render('index', [
@@ -47,7 +47,7 @@ class WorktradeController extends Controller
     }
 
     /**
-     * Displays a single Worktrade model.
+     * Displays a single Pmtask model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,20 +60,16 @@ class WorktradeController extends Controller
     }
 
     /**
-     * Creates a new Worktrade model.
+     * Creates a new Pmtask model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Worktrade();
+        $model = new Pmtask();
 
-        if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
-                $session = Yii::$app->session;
-                $session->setFlash('msg','บันทึกรายการเรียบร้อย');
-                return $this->redirect(['index']);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -82,7 +78,7 @@ class WorktradeController extends Controller
     }
 
     /**
-     * Updates an existing Worktrade model.
+     * Updates an existing Pmtask model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -92,12 +88,8 @@ class WorktradeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
-                $session = Yii::$app->session;
-                $session->setFlash('msg','บันทึกรายการเรียบร้อย');
-                return $this->redirect(['index']);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -106,7 +98,7 @@ class WorktradeController extends Controller
     }
 
     /**
-     * Deletes an existing Worktrade model.
+     * Deletes an existing Pmtask model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -120,15 +112,15 @@ class WorktradeController extends Controller
     }
 
     /**
-     * Finds the Worktrade model based on its primary key value.
+     * Finds the Pmtask model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Worktrade the loaded model
+     * @return Pmtask the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Worktrade::findOne($id)) !== null) {
+        if (($model = Pmtask::findOne($id)) !== null) {
             return $model;
         }
 

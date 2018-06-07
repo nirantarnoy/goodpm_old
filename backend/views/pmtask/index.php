@@ -6,13 +6,13 @@ use yii\widgets\Pjax;
 use yii\helpers\Url;
 use lavrentiev\widgets\toastr\Notification;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\FailurecodeSearch */
+/* @var $searchModel backend\models\PmtaskSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Failure codes');
+$this->title = Yii::t('app', 'ลำดับงาน');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="failurecode-index">
+<div class="pmtask-index">
     <?php $session = Yii::$app->session;
     if ($session->getFlash('msg')): ?>
         <!-- <div class="alert alert-success alert-dismissible" role="alert">
@@ -49,10 +49,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="x_panel">
         <div class="x_title">
             <div class="btn-group">
-                <?= Html::a(Yii::t('app', '<i class="fa fa-plus"></i> สร้าง Failure Code'), ['create'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a(Yii::t('app', '<i class="fa fa-plus"></i> สร้างลำดับงาน'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
-
-            <h4 class="pull-right"><?=$this->title?> <i class="fa fa-cubes"></i><small></small></h4>
+            <h4 class="pull-right"><?=$this->title?> <i class="fa fa-institution"></i><small></small></h4>
             <!-- <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
               <li class="dropdown">
@@ -75,11 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="form-inline">
                         <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
                     </div>
-
                 </div>
                 <div class="col-lg-3">
                     <div class="pull-right">
-                        <form id="form-perpage" class="form-inline" action="<?=Url::to(['unit/index'],true)?>" method="post">
+                        <form id="form-perpage" class="form-inline" action="<?=Url::to(['section/index'],true)?>" method="post">
                             <div class="form-group">
                                 <label>แสดง </label>
                                 <select class="form-control" name="perpage" id="perpage">
@@ -93,6 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
             </div>
+            <div class="table-responsive">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'emptyCell'=>'-',
@@ -102,19 +101,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'tableOptions' => ['class' => 'table table-hover'],
                         'emptyText' => '<div style="color: red;align: center;"> <b>ไม่พบรายการไดๆ</b></div>',
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn', 'contentOptions' => ['style' => 'vertical-align: middle'],],
+                            ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'vertical-align: middle'],],
 
-                           // 'id',
+                            //'id',
+
                             [
-                                'attribute'=>'failure_code',
+                                'attribute' => 'name',
                                 'contentOptions' => ['style' => 'vertical-align: middle'],
                             ],
                             [
-                                'attribute'=>'name',
-                                'contentOptions' => ['style' => 'vertical-align: middle'],
-                            ],
-                            [
-                                'attribute'=>'description',
+                                'attribute' => 'description',
                                 'contentOptions' => ['style' => 'vertical-align: middle'],
                             ],
                             [
@@ -173,8 +169,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                     ]); ?>
+            </div>
         </div>
     </div>
-</div>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 </div>

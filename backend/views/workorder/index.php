@@ -6,6 +6,8 @@ use yii\widgets\Pjax;
 use yii\helpers\Url;
 use lavrentiev\widgets\toastr\Notification;
 use backend\assets\ICheckAsset;
+use dosamigos\multiselect\MultiSelect;
+use yii\helpers\ArrayHelper;
 
 ICheckAsset::register($this);
 /* @var $this yii\web\View */
@@ -14,6 +16,7 @@ ICheckAsset::register($this);
 
 $this->title = Yii::t('app', 'ใบสั่งงาน');
 $this->params['breadcrumbs'][] = $this->title;
+$catall = \backend\models\Assetgroup::find()->where(['!=','name',''])->orderby(['name'=>SORT_ASC])->all();
 
 $this->registerJsFile(
     '@web/js/stockbalancejs.js?V=001',
@@ -68,7 +71,7 @@ $this->registerJsFile(
                 <div class="btn btn-default"><i class="fa fa-refresh"></i> เบิกอะไหล่/เครื่องมือ</งงาน></div>
                 <div class="btn btn-default"><i class="fa fa-print"></i> พิมพ์</div>
             </div>
-            <h4 class="pull-right"><?=$this->title?> <i class="fa fa-file"></i><small></small></h4>
+            <h4 class="pull-right"><?=$this->title?> <i class="fa fa-files-o"></i><small></small></h4>
             <!-- <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
               <li class="dropdown">
@@ -88,9 +91,73 @@ $this->registerJsFile(
         <div class="x_content">
             <div class="row">
                 <div class="col-lg-9">
-                    <div class="form-inline">
-                        <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-                    </div>
+                    <form id="search-form" action="<?=Url::to(['product/index'],true)?>" method="post">
+                        <div class="form-inline">
+
+                            <input type="text" class="form-control" name="search_all" value="" placeholder="ค้นหารหัส,ชื่อ">
+                            <?php
+                            echo MultiSelect::widget([
+                                'id'=>"mul_work_type",
+                                'name'=>'mul_work_type[]',
+                                //'model'=>null,
+                                "options" => ['multiple'=>"multiple",
+                                    'onchange'=>''], // for the actual multiselect
+                                'data' => count($catall)==0?['ไม่มีข้อมูล']:ArrayHelper::map(\backend\helpers\WorkType::asArrayObject(),'id','name'), // data as array
+                                'value' => null, // if preselected
+                                "clientOptions" =>
+                                    [
+                                        "includeSelectAllOption" => true,
+                                        'numberDisplayed' => 5,
+                                        'nonSelectedText'=>'ประเภทงาน',
+                                        'enableFiltering' => true,
+                                        'enableCaseInsensitiveFiltering'=>true,
+                                    ],
+                            ]); ?>
+                            <?php
+                            echo MultiSelect::widget([
+                                'id'=>"mul_work_priority",
+                                'name'=>'mul_work_priority[]',
+                                //'model'=>null,
+                                "options" => ['multiple'=>"multiple",
+                                    'onchange'=>''], // for the actual multiselect
+                                'data' => count($catall)==0?['ไม่มีข้อมูล']:ArrayHelper::map(\backend\helpers\Workpriority::asArrayObject(),'id','name'), // data as array
+                                'value' => null, // if preselected
+                                "clientOptions" =>
+                                    [
+                                        "includeSelectAllOption" => true,
+                                        'numberDisplayed' => 5,
+                                        'nonSelectedText'=>'ระดับความสำคัญ',
+                                        'enableFiltering' => true,
+                                        'enableCaseInsensitiveFiltering'=>true,
+                                    ],
+                            ]); ?>
+                            <?php
+                            echo MultiSelect::widget([
+                                'id'=>"work_req_status",
+                                'name'=>'work_req_status[]',
+                                //'model'=>null,
+                                "options" => ['multiple'=>"multiple",
+                                    'onchange'=>''], // for the actual multiselect
+                                'data' => count($catall)==0?['ไม่มีข้อมูล']:ArrayHelper::map(\backend\helpers\WorkReqStatus::asArrayObject(),'id','name'), // data as array
+                                'value' => null, // if preselected
+                                "clientOptions" =>
+                                    [
+                                        "includeSelectAllOption" => true,
+                                        'numberDisplayed' => 5,
+                                        'nonSelectedText'=>'สถานะ',
+                                        'enableFiltering' => true,
+                                        'enableCaseInsensitiveFiltering'=>true,
+                                    ],
+                            ]); ?>
+
+                            <div class="btn-group">
+                                <div class="btn btn-info btn-search"> ค้นหา</div>
+                                <div class="btn btn-default btn-reset"> รีเซ็ต</div>
+                            </div>
+
+
+                        </div>
+                    </form>
                 </div>
                 <div class="col-lg-3">
                     <div class="pull-right">

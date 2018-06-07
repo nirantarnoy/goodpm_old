@@ -125,6 +125,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         "icon" => "calendar",
                                         "url" => "#",
                                         "items" => [
+                                            ["label" => "ขั้นตอนงาน", "url" => ["pmtask/index"]],
                                             ["label" => "กำหนดแผนบำรุงรักษา", "url" => ["masterplan/index"]],
                                             ["label" => "คำนวนแผน", "url" => ["genplan/index"]],
                                             //["label" => "หน่วยงานรับผิดชอบ", "url" => ["sequence/index"]],
@@ -135,7 +136,6 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         "icon" => "pencil-square-o",
                                         "url" => "#",
                                         "items" => [
-                                            ["label" => "ประเภทใบงาน", "url" => ["worktype/index"]],
                                             ["label" => "ใบร้อแจ้งร้องขอ", "url" => ["workreq/index"]],
                                             ["label" => "ใบสั่งงาน", "url" => ["workorder/index"]],
                                         ],

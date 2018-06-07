@@ -79,10 +79,13 @@ class SysconfigController extends Controller
     {
         $model = new Sysconfig();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $session = Yii::$app->session;
-            $session->setFlash('msg','บันทึกรายการเรียบร้อย');
-            return $this->redirect(['update', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if( $model->save()){
+                $session = Yii::$app->session;
+                $session->setFlash('msg','บันทึกรายการเรียบร้อย');
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('create', [
@@ -100,10 +103,12 @@ class SysconfigController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $session = Yii::$app->session;
-            $session->setFlash('msg','บันทึกรายการเรียบร้อย');
-            return $this->redirect(['update', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if( $model->save()){
+                $session = Yii::$app->session;
+                $session->setFlash('msg','บันทึกรายการเรียบร้อย');
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

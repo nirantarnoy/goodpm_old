@@ -53,9 +53,10 @@ class WorkOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['work_order_date', 'action_by', 'action_date', 'vendor_id', 'work_trade', 'work_type', 'work_priority', 'work_title', 'plant_id', 'department_id', 'section_id', 'location_id', 'estimate_start_date', 'estimate_end_date', 'actual_start_date', 'actual_end_date', 'actual_asset_start_date', 'asset_id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
+            [['action_by', 'action_date', 'vendor_id', 'work_trade', 'work_type', 'work_priority', 'work_title', 'plant_id', 'department_id', 'section_id', 'location_id', 'estimate_start_date', 'estimate_end_date', 'actual_start_date', 'actual_end_date', 'actual_asset_start_date', 'asset_id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['description', 'request_detail'], 'string'],
-            [['work_order_no', 'name', 'action_note'], 'string', 'max' => 255],
+            [['work_order_date','problem_date'],'safe'],
+            [['work_order_no', 'name', 'action_note','problem_cause'], 'string', 'max' => 255],
         ];
     }
 
@@ -90,6 +91,8 @@ class WorkOrder extends \yii\db\ActiveRecord
             'actual_asset_start_date' => Yii::t('app', 'Actual Asset Start Date'),
             'asset_id' => Yii::t('app', 'Asset ID'),
             'status' => Yii::t('app', 'Status'),
+            'problem_cause' => Yii::t('app', 'สาเหตุปัญหา'),
+            'problem_date' => Yii::t('app', 'วันที่พบปัญหา'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
